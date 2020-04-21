@@ -44,7 +44,7 @@ dataset.dteday= pd.to_datetime(dataset.dteday)
 def predict_atemp(p_atemp):
 
 	if p_atemp > 0.840896 or p_atemp < 0.079070:
-		raise ValueError('atemp should be the value between 0.84 and 0.079')
+		raise ValueError('atemp should be the value between 0.840896 and 0.079070')
 	
 	#prepare the training data with corresponding labels for modeling the data
 	
@@ -75,6 +75,9 @@ def predict_atemp(p_atemp):
 
 def predict_hum(p_hum):
 	
+	if p_atemp > 0.972500 or p_atemp < 0.000000:
+		raise ValueError('windspeed should be the value between 0.022392 and 0.507463')
+	
 	#prepare the training data with corresponding labels for modeling the data
 	
 	dataset_train=dataset.hum[dataset.dteday < '2011-12-31']
@@ -100,6 +103,9 @@ def predict_hum(p_hum):
 	
  	
 def predict_windspeed(p_windspeed):
+
+	if p_atemp > 0.507463 or p_atemp < 0.022392:
+		raise ValueError('windspeed should be the value between 0.022392 and 0.507463')
 
 	
 	dataset_train=dataset.windspeed[dataset.dteday < '2011-12-31']
